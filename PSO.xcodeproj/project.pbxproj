@@ -1,0 +1,458 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		46FA79C713D3185D0080CF55 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FA79C613D3185D0080CF55 /* UIKit.framework */; };
+		46FA79C913D3185D0080CF55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FA79C813D3185D0080CF55 /* Foundation.framework */; };
+		46FA79CB13D3185D0080CF55 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FA79CA13D3185D0080CF55 /* CoreGraphics.framework */; };
+		46FA79D113D3185D0080CF55 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46FA79CF13D3185D0080CF55 /* InfoPlist.strings */; };
+		46FA79D413D3185D0080CF55 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FA79D313D3185D0080CF55 /* main.m */; };
+		46FA79D713D3185D0080CF55 /* PSOAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FA79D613D3185D0080CF55 /* PSOAppDelegate.m */; };
+		46FA79DA13D3185D0080CF55 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46FA79D813D3185D0080CF55 /* MainWindow.xib */; };
+		46FA79DD13D3185D0080CF55 /* PSOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FA79DC13D3185D0080CF55 /* PSOViewController.m */; };
+		46FA79E013D3185D0080CF55 /* PSOViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46FA79DE13D3185D0080CF55 /* PSOViewController.xib */; };
+		46FA79E713D3185D0080CF55 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FA79C613D3185D0080CF55 /* UIKit.framework */; };
+		46FA79E813D3185D0080CF55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FA79C813D3185D0080CF55 /* Foundation.framework */; };
+		46FA79E913D3185D0080CF55 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FA79CA13D3185D0080CF55 /* CoreGraphics.framework */; };
+		46FA79F113D3185D0080CF55 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46FA79EF13D3185D0080CF55 /* InfoPlist.strings */; };
+		46FA79F413D3185D0080CF55 /* PSOTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 46FA79F313D3185D0080CF55 /* PSOTests.h */; };
+		46FA79F613D3185D0080CF55 /* PSOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FA79F513D3185D0080CF55 /* PSOTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		46FA79EA13D3185D0080CF55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 46FA79B913D3185C0080CF55 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 46FA79C113D3185D0080CF55;
+			remoteInfo = PSO;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		46FA79C213D3185D0080CF55 /* PSO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		46FA79C613D3185D0080CF55 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		46FA79C813D3185D0080CF55 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		46FA79CA13D3185D0080CF55 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		46FA79CE13D3185D0080CF55 /* PSO-Info.plist */ = {isa = PBXFileReference; path = "PSO-Info.plist"; sourceTree = "<group>"; };
+		46FA79D013D3185D0080CF55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		46FA79D213D3185D0080CF55 /* PSO-Prefix.pch */ = {isa = PBXFileReference; path = "PSO-Prefix.pch"; sourceTree = "<group>"; };
+		46FA79D313D3185D0080CF55 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		46FA79D513D3185D0080CF55 /* PSOAppDelegate.h */ = {isa = PBXFileReference; path = PSOAppDelegate.h; sourceTree = "<group>"; };
+		46FA79D613D3185D0080CF55 /* PSOAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSOAppDelegate.m; sourceTree = "<group>"; };
+		46FA79D913D3185D0080CF55 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		46FA79DB13D3185D0080CF55 /* PSOViewController.h */ = {isa = PBXFileReference; path = PSOViewController.h; sourceTree = "<group>"; };
+		46FA79DC13D3185D0080CF55 /* PSOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSOViewController.m; sourceTree = "<group>"; };
+		46FA79DF13D3185D0080CF55 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PSOViewController.xib; sourceTree = "<group>"; };
+		46FA79E613D3185D0080CF55 /* PSOTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PSOTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		46FA79EE13D3185D0080CF55 /* PSOTests-Info.plist */ = {isa = PBXFileReference; path = "PSOTests-Info.plist"; sourceTree = "<group>"; };
+		46FA79F013D3185D0080CF55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		46FA79F213D3185D0080CF55 /* PSOTests-Prefix.pch */ = {isa = PBXFileReference; path = "PSOTests-Prefix.pch"; sourceTree = "<group>"; };
+		46FA79F313D3185D0080CF55 /* PSOTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSOTests.h; sourceTree = "<group>"; };
+		46FA79F513D3185D0080CF55 /* PSOTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSOTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		46FA79BF13D3185D0080CF55 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46FA79C713D3185D0080CF55 /* UIKit.framework in Frameworks */,
+				46FA79C913D3185D0080CF55 /* Foundation.framework in Frameworks */,
+				46FA79CB13D3185D0080CF55 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46FA79E213D3185D0080CF55 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46FA79E713D3185D0080CF55 /* UIKit.framework in Frameworks */,
+				46FA79E813D3185D0080CF55 /* Foundation.framework in Frameworks */,
+				46FA79E913D3185D0080CF55 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		46FA79B713D3185C0080CF55 = {
+			isa = PBXGroup;
+			children = (
+				46FA79CC13D3185D0080CF55 /* PSO */,
+				46FA79EC13D3185D0080CF55 /* PSOTests */,
+				46FA79C513D3185D0080CF55 /* Frameworks */,
+				46FA79C313D3185D0080CF55 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		46FA79C313D3185D0080CF55 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				46FA79C213D3185D0080CF55 /* PSO.app */,
+				46FA79E613D3185D0080CF55 /* PSOTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		46FA79C513D3185D0080CF55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46FA79C613D3185D0080CF55 /* UIKit.framework */,
+				46FA79C813D3185D0080CF55 /* Foundation.framework */,
+				46FA79CA13D3185D0080CF55 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		46FA79CC13D3185D0080CF55 /* PSO */ = {
+			isa = PBXGroup;
+			children = (
+				46FA79D513D3185D0080CF55 /* PSOAppDelegate.h */,
+				46FA79D613D3185D0080CF55 /* PSOAppDelegate.m */,
+				46FA79D813D3185D0080CF55 /* MainWindow.xib */,
+				46FA79DB13D3185D0080CF55 /* PSOViewController.h */,
+				46FA79DC13D3185D0080CF55 /* PSOViewController.m */,
+				46FA79DE13D3185D0080CF55 /* PSOViewController.xib */,
+				46FA79CD13D3185D0080CF55 /* Supporting Files */,
+			);
+			path = PSO;
+			sourceTree = "<group>";
+		};
+		46FA79CD13D3185D0080CF55 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				46FA79CE13D3185D0080CF55 /* PSO-Info.plist */,
+				46FA79CF13D3185D0080CF55 /* InfoPlist.strings */,
+				46FA79D213D3185D0080CF55 /* PSO-Prefix.pch */,
+				46FA79D313D3185D0080CF55 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		46FA79EC13D3185D0080CF55 /* PSOTests */ = {
+			isa = PBXGroup;
+			children = (
+				46FA79F313D3185D0080CF55 /* PSOTests.h */,
+				46FA79F513D3185D0080CF55 /* PSOTests.m */,
+				46FA79ED13D3185D0080CF55 /* Supporting Files */,
+			);
+			path = PSOTests;
+			sourceTree = "<group>";
+		};
+		46FA79ED13D3185D0080CF55 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				46FA79EE13D3185D0080CF55 /* PSOTests-Info.plist */,
+				46FA79EF13D3185D0080CF55 /* InfoPlist.strings */,
+				46FA79F213D3185D0080CF55 /* PSOTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		46FA79C113D3185D0080CF55 /* PSO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46FA79F913D3185D0080CF55 /* Build configuration list for PBXNativeTarget "PSO" */;
+			buildPhases = (
+				46FA79BE13D3185D0080CF55 /* Sources */,
+				46FA79BF13D3185D0080CF55 /* Frameworks */,
+				46FA79C013D3185D0080CF55 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PSO;
+			productName = PSO;
+			productReference = 46FA79C213D3185D0080CF55 /* PSO.app */;
+			productType = "com.apple.product-type.application";
+		};
+		46FA79E513D3185D0080CF55 /* PSOTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 46FA79FC13D3185D0080CF55 /* Build configuration list for PBXNativeTarget "PSOTests" */;
+			buildPhases = (
+				46FA79E113D3185D0080CF55 /* Sources */,
+				46FA79E213D3185D0080CF55 /* Frameworks */,
+				46FA79E313D3185D0080CF55 /* Resources */,
+				46FA79E413D3185D0080CF55 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				46FA79EB13D3185D0080CF55 /* PBXTargetDependency */,
+			);
+			name = PSOTests;
+			productName = PSOTests;
+			productReference = 46FA79E613D3185D0080CF55 /* PSOTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		46FA79B913D3185C0080CF55 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 46FA79BC13D3185C0080CF55 /* Build configuration list for PBXProject "PSO" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 46FA79B713D3185C0080CF55;
+			productRefGroup = 46FA79C313D3185D0080CF55 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				46FA79C113D3185D0080CF55 /* PSO */,
+				46FA79E513D3185D0080CF55 /* PSOTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		46FA79C013D3185D0080CF55 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46FA79D113D3185D0080CF55 /* InfoPlist.strings in Resources */,
+				46FA79DA13D3185D0080CF55 /* MainWindow.xib in Resources */,
+				46FA79E013D3185D0080CF55 /* PSOViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46FA79E313D3185D0080CF55 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46FA79F113D3185D0080CF55 /* InfoPlist.strings in Resources */,
+				46FA79F413D3185D0080CF55 /* PSOTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		46FA79E413D3185D0080CF55 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		46FA79BE13D3185D0080CF55 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46FA79D413D3185D0080CF55 /* main.m in Sources */,
+				46FA79D713D3185D0080CF55 /* PSOAppDelegate.m in Sources */,
+				46FA79DD13D3185D0080CF55 /* PSOViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		46FA79E113D3185D0080CF55 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46FA79F613D3185D0080CF55 /* PSOTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		46FA79EB13D3185D0080CF55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 46FA79C113D3185D0080CF55 /* PSO */;
+			targetProxy = 46FA79EA13D3185D0080CF55 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		46FA79CF13D3185D0080CF55 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46FA79D013D3185D0080CF55 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		46FA79D813D3185D0080CF55 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46FA79D913D3185D0080CF55 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		46FA79DE13D3185D0080CF55 /* PSOViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46FA79DF13D3185D0080CF55 /* en */,
+			);
+			name = PSOViewController.xib;
+			sourceTree = "<group>";
+		};
+		46FA79EF13D3185D0080CF55 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				46FA79F013D3185D0080CF55 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		46FA79F713D3185D0080CF55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		46FA79F813D3185D0080CF55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		46FA79FA13D3185D0080CF55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PSO/PSO-Prefix.pch";
+				INFOPLIST_FILE = "PSO/PSO-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		46FA79FB13D3185D0080CF55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PSO/PSO-Prefix.pch";
+				INFOPLIST_FILE = "PSO/PSO-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		46FA79FD13D3185D0080CF55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PSO.app/PSO";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PSOTests/PSOTests-Prefix.pch";
+				INFOPLIST_FILE = "PSOTests/PSOTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		46FA79FE13D3185D0080CF55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/PSO.app/PSO";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PSOTests/PSOTests-Prefix.pch";
+				INFOPLIST_FILE = "PSOTests/PSOTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		46FA79BC13D3185C0080CF55 /* Build configuration list for PBXProject "PSO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46FA79F713D3185D0080CF55 /* Debug */,
+				46FA79F813D3185D0080CF55 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		46FA79F913D3185D0080CF55 /* Build configuration list for PBXNativeTarget "PSO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46FA79FA13D3185D0080CF55 /* Debug */,
+				46FA79FB13D3185D0080CF55 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		46FA79FC13D3185D0080CF55 /* Build configuration list for PBXNativeTarget "PSOTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46FA79FD13D3185D0080CF55 /* Debug */,
+				46FA79FE13D3185D0080CF55 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 46FA79B913D3185C0080CF55 /* Project object */;
+}
