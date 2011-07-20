@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		468B270913D66ED800B05CAE /* SwarmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 468B270813D66ED800B05CAE /* SwarmView.m */; };
+		468B271713D77A5000B05CAE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 468B271613D77A5000B05CAE /* QuartzCore.framework */; };
 		46FA79C713D3185D0080CF55 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FA79C613D3185D0080CF55 /* UIKit.framework */; };
 		46FA79C913D3185D0080CF55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FA79C813D3185D0080CF55 /* Foundation.framework */; };
 		46FA79CB13D3185D0080CF55 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FA79CA13D3185D0080CF55 /* CoreGraphics.framework */; };
@@ -22,6 +24,8 @@
 		46FA79F113D3185D0080CF55 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 46FA79EF13D3185D0080CF55 /* InfoPlist.strings */; };
 		46FA79F413D3185D0080CF55 /* PSOTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 46FA79F313D3185D0080CF55 /* PSOTests.h */; };
 		46FA79F613D3185D0080CF55 /* PSOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FA79F513D3185D0080CF55 /* PSOTests.m */; };
+		46FA7A0213D318AF0080CF55 /* PSOContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FA7A0113D318AF0080CF55 /* PSOContext.m */; };
+		46FA7A0513D318C00080CF55 /* Particle.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FA7A0413D318C00080CF55 /* Particle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,26 +39,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		468B270713D66ED800B05CAE /* SwarmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwarmView.h; sourceTree = "<group>"; };
+		468B270813D66ED800B05CAE /* SwarmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwarmView.m; sourceTree = "<group>"; };
+		468B271613D77A5000B05CAE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		46FA79C213D3185D0080CF55 /* PSO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46FA79C613D3185D0080CF55 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		46FA79C813D3185D0080CF55 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		46FA79CA13D3185D0080CF55 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		46FA79CE13D3185D0080CF55 /* PSO-Info.plist */ = {isa = PBXFileReference; path = "PSO-Info.plist"; sourceTree = "<group>"; };
+		46FA79CE13D3185D0080CF55 /* PSO-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PSO-Info.plist"; sourceTree = "<group>"; };
 		46FA79D013D3185D0080CF55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		46FA79D213D3185D0080CF55 /* PSO-Prefix.pch */ = {isa = PBXFileReference; path = "PSO-Prefix.pch"; sourceTree = "<group>"; };
+		46FA79D213D3185D0080CF55 /* PSO-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PSO-Prefix.pch"; sourceTree = "<group>"; };
 		46FA79D313D3185D0080CF55 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		46FA79D513D3185D0080CF55 /* PSOAppDelegate.h */ = {isa = PBXFileReference; path = PSOAppDelegate.h; sourceTree = "<group>"; };
+		46FA79D513D3185D0080CF55 /* PSOAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSOAppDelegate.h; sourceTree = "<group>"; };
 		46FA79D613D3185D0080CF55 /* PSOAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSOAppDelegate.m; sourceTree = "<group>"; };
 		46FA79D913D3185D0080CF55 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		46FA79DB13D3185D0080CF55 /* PSOViewController.h */ = {isa = PBXFileReference; path = PSOViewController.h; sourceTree = "<group>"; };
+		46FA79DB13D3185D0080CF55 /* PSOViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSOViewController.h; sourceTree = "<group>"; };
 		46FA79DC13D3185D0080CF55 /* PSOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSOViewController.m; sourceTree = "<group>"; };
 		46FA79DF13D3185D0080CF55 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PSOViewController.xib; sourceTree = "<group>"; };
 		46FA79E613D3185D0080CF55 /* PSOTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PSOTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		46FA79EE13D3185D0080CF55 /* PSOTests-Info.plist */ = {isa = PBXFileReference; path = "PSOTests-Info.plist"; sourceTree = "<group>"; };
+		46FA79EE13D3185D0080CF55 /* PSOTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PSOTests-Info.plist"; sourceTree = "<group>"; };
 		46FA79F013D3185D0080CF55 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		46FA79F213D3185D0080CF55 /* PSOTests-Prefix.pch */ = {isa = PBXFileReference; path = "PSOTests-Prefix.pch"; sourceTree = "<group>"; };
+		46FA79F213D3185D0080CF55 /* PSOTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PSOTests-Prefix.pch"; sourceTree = "<group>"; };
 		46FA79F313D3185D0080CF55 /* PSOTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PSOTests.h; sourceTree = "<group>"; };
 		46FA79F513D3185D0080CF55 /* PSOTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PSOTests.m; sourceTree = "<group>"; };
+		46FA7A0013D318AF0080CF55 /* PSOContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSOContext.h; sourceTree = "<group>"; };
+		46FA7A0113D318AF0080CF55 /* PSOContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSOContext.m; sourceTree = "<group>"; };
+		46FA7A0313D318C00080CF55 /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
+		46FA7A0413D318C00080CF55 /* Particle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Particle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				468B271713D77A5000B05CAE /* QuartzCore.framework in Frameworks */,
 				46FA79C713D3185D0080CF55 /* UIKit.framework in Frameworks */,
 				46FA79C913D3185D0080CF55 /* Foundation.framework in Frameworks */,
 				46FA79CB13D3185D0080CF55 /* CoreGraphics.framework in Frameworks */,
@@ -103,6 +115,7 @@
 		46FA79C513D3185D0080CF55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				468B271613D77A5000B05CAE /* QuartzCore.framework */,
 				46FA79C613D3185D0080CF55 /* UIKit.framework */,
 				46FA79C813D3185D0080CF55 /* Foundation.framework */,
 				46FA79CA13D3185D0080CF55 /* CoreGraphics.framework */,
@@ -113,6 +126,9 @@
 		46FA79CC13D3185D0080CF55 /* PSO */ = {
 			isa = PBXGroup;
 			children = (
+				468B270713D66ED800B05CAE /* SwarmView.h */,
+				468B270813D66ED800B05CAE /* SwarmView.m */,
+				46FA79FF13D318850080CF55 /* PSOLib */,
 				46FA79D513D3185D0080CF55 /* PSOAppDelegate.h */,
 				46FA79D613D3185D0080CF55 /* PSOAppDelegate.m */,
 				46FA79D813D3185D0080CF55 /* MainWindow.xib */,
@@ -153,6 +169,17 @@
 				46FA79F213D3185D0080CF55 /* PSOTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		46FA79FF13D318850080CF55 /* PSOLib */ = {
+			isa = PBXGroup;
+			children = (
+				46FA7A0013D318AF0080CF55 /* PSOContext.h */,
+				46FA7A0113D318AF0080CF55 /* PSOContext.m */,
+				46FA7A0313D318C00080CF55 /* Particle.h */,
+				46FA7A0413D318C00080CF55 /* Particle.m */,
+			);
+			name = PSOLib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,6 +290,9 @@
 				46FA79D413D3185D0080CF55 /* main.m in Sources */,
 				46FA79D713D3185D0080CF55 /* PSOAppDelegate.m in Sources */,
 				46FA79DD13D3185D0080CF55 /* PSOViewController.m in Sources */,
+				46FA7A0213D318AF0080CF55 /* PSOContext.m in Sources */,
+				46FA7A0513D318C00080CF55 /* Particle.m in Sources */,
+				468B270913D66ED800B05CAE /* SwarmView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,12 +386,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PSO/PSO-Prefix.pch";
 				INFOPLIST_FILE = "PSO/PSO-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -370,11 +402,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PSO/PSO-Prefix.pch";
 				INFOPLIST_FILE = "PSO/PSO-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
@@ -443,6 +477,7 @@
 				46FA79FB13D3185D0080CF55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		46FA79FC13D3185D0080CF55 /* Build configuration list for PBXNativeTarget "PSOTests" */ = {
 			isa = XCConfigurationList;
@@ -451,6 +486,7 @@
 				46FA79FE13D3185D0080CF55 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
