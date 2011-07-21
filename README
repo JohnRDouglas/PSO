@@ -1,0 +1,6 @@
+PSO is my sandbox for a Particle Swarm Optimization framework for Object-C.  
+
+A PSOContext initializes the particles and handles the initialization and global bests.
+
+Fitness function is external to the PSOContext.  The fitness function must evaluate the particles (as arrays of double) and input an array of double, representing each particle's fitness, to the PSOContext's iteration: method.
+
