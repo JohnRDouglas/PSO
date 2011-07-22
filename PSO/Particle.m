@@ -10,7 +10,8 @@
 
 float rnd()
 {
-    float ret = (arc4random() % 10000) / 10000.0f;
+    
+    float ret = (arc4random() % (LONG_MAX - 1)) / ((float)LONG_MAX);
     return ret;
 }
 
@@ -37,7 +38,7 @@ float rnd()
             ub = [[upperBounds objectAtIndex:i] doubleValue];
             myPosits[i] = lb + rnd() * (ub - lb);
 
-            myVelocities[i] = rnd()  * (ub - lb);
+            myVelocities[i] = (1 - 2 *rnd()) * (ub - lb);
             myBestPosits[i] = myPosits[i];
 
         }
@@ -52,6 +53,14 @@ float rnd()
 -(void) setVelocityFactor: (double)MaxVelocity 
 {
     velocityFactor = MaxVelocity;
+    
+    double lb, ub;
+    for (int i = 0; i < dimensions; i++) {
+        lb = [[lowerBounds objectAtIndex:i] doubleValue];
+        ub = [[upperBounds objectAtIndex:i] doubleValue];
+
+        myVelocities[i] = (1 - 2 *rnd()) * velocityFactor * (ub - lb);
+    }
 }
 
 
@@ -78,6 +87,10 @@ float rnd()
     return bp;
 }
 
+-(NSInteger) Dimension
+{
+    return dimensions;
+}
 
 -(void) iterate: (NSNumber *) Score
 {
@@ -85,26 +98,27 @@ float rnd()
     
     double ub, lb;
     for(int i = 0; i < dimensions; i++) {
-        myVelocities[i] = .5 + (1.5 * rnd()) * myVelocities[i] + 
-        1.49 * rnd() * (myBestPosits[i] - myPosits[i]) + 
-        1.49 * rnd() * ([[[globalBest BestPosits] objectAtIndex:i] doubleValue] - myPosits[i]);
+        myVelocities[i] = .5 * (1 + 1.0 * rnd()) * myVelocities[i] + 
+        1.4945 * rnd() * (myBestPosits[i] - myPosits[i]) + 
+        1.4945 * rnd() * ([[[globalBest BestPosits] objectAtIndex:i] doubleValue] - myPosits[i]);
+        
         myPosits[i] += myVelocities[i];
 
         ub = [[upperBounds objectAtIndex:i] doubleValue];
         lb = [[lowerBounds objectAtIndex:i] doubleValue];
                 
         if(myPosits[i] > ub) {
-            myPosits[i] = ub;
+            myPosits[i] = (ub - fabs(ub - myPosits[i]));
             myVelocities[i] *= -1;
         }
         
         if(myPosits[i] < lb) {
-            myPosits[i] = lb;
+            myPosits[i] = lb + (lb - myPosits[i]);
             myVelocities[i] *= -1;
         }
         
         if(fabs(myVelocities[i]) > velocityFactor * (ub - lb)) {
-            myVelocities[i] = velocityFactor * (ub - lb);
+            myVelocities[i] = velocityFactor * (1 - rnd() * 2) * (ub - lb);
         }
     }
 }
@@ -128,11 +142,17 @@ float rnd()
     return [NSNumber numberWithDouble:myFitness];
 }
 
--(void) reset
+-(void) reset: (BOOL) ResetPosits
 {
     myFitness = DBL_MAX;
     myBestFitness = DBL_MAX;
     for(int i = 0; i < dimensions; i++) {
+        if(ResetPosits) {
+            double lb, ub;
+            lb = [[lowerBounds objectAtIndex:i] doubleValue];
+            ub = [[upperBounds objectAtIndex:i] doubleValue];
+            myPosits[i] = lb + rnd() * (ub - lb);
+        }
         myBestPosits[i] = myPosits[i];
     }
 }

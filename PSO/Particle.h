@@ -30,12 +30,13 @@
 
 -(NSArray *) Posits;
 -(NSArray *) BestPosits;
+-(NSInteger) Dimension;
 
 -(void) iterate: (NSNumber *) Score;
 -(BOOL) setFitness: (NSNumber *) Score;
 
 -(NSNumber *) Fitness;
--(void) reset;
+-(void) reset: (BOOL) ResetPosits;
 
 @end
 

@@ -14,23 +14,25 @@
     int myDimension;
     int hoodSize;
     Particle *myGlobalBest;
-    double myGlobalBestFitness;
     double velocityFactor;
 }
 
 @property (nonatomic, retain) NSArray *upperBounds, *lowerBounds;
 
+
 -(id) initWithPopulation: (int)PopSize dimension: (int)DimCount lowerBounds: (NSArray *)newLowerBounds upperBounds: (NSArray *)newUpperBounds;;
 -(void) setVelocityFactor: (double)MaxVelocity;
 -(void) setNeighborhoodSize: (int)NeighborCount;
+-(void) setParticleCount: (int) popSize;
 
 -(NSArray *) Particles;
 -(NSNumber *) Dimension;
+-(double) velocityFactor;
 
 -(void) iterate: (NSArray *)Scores;
 
 -(Particle *)globalBest;
 
--(void)resetParticles;
+-(void)resetParticles: (BOOL)ResetPosits;
 
 @end

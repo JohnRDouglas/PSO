@@ -18,10 +18,13 @@
     PSOContext *myPSO;
     CGPoint touchPoint;
     NSMutableArray *scores;
+    IBOutlet UISlider *popSizeSlider, *maxVelSlider;
 }
 @property (nonatomic, retain) IBOutlet SwarmView *mySwarmView;
 @property (nonatomic, retain) PSOContext *myPSO;
+@property (nonatomic, retain) IBOutlet UISlider *popSizeSlider, *maxVelSlider;
 
 -(void) update;
+-(void) evaluateFitness;
 
 @end

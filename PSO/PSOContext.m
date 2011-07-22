@@ -28,7 +28,8 @@
             [myParticles addObject:p];
         }
         
-        myGlobalBest = [myParticles objectAtIndex:0];
+        //myGlobalBest = [myParticles objectAtIndex:0];
+        myGlobalBest = [myParticles objectAtIndex:arc4random() % [myParticles count]];
     }
     return self;
 }
@@ -40,6 +41,11 @@
     }
 }
  
+-(double) velocityFactor
+{
+    return velocityFactor;
+}
+
 -(void) setNeighborhoodSize:(int)NeighborCount
 {
     if (NeighborCount >= [myParticles count] / 2)
@@ -69,6 +75,28 @@
     }
 }
 
+-(void) setParticleCount: (int) popSize
+{
+    if(popSize == [myParticles count])
+        return;
+    
+
+    if(popSize > [myParticles count]) {
+        int dimCount = myDimension;
+        for(int i = [myParticles count]; i < popSize; i++) {
+            Particle *p = [[[Particle alloc] initWithDimension: dimCount 
+                                                   lowerBounds:lowerBounds upperBounds:upperBounds] autorelease];
+            [myParticles addObject:p];
+        }
+    } else {
+        for(int i = [myParticles count] - 1; i >= popSize; i--) {
+            [myParticles removeObjectAtIndex:i];
+        }
+    }
+        
+    
+}
+
 -(NSArray *) Particles 
 {
 
@@ -92,8 +120,7 @@
     for(int i = 0; i < popSize; i++) {
         p = [myParticles objectAtIndex:i];
         double s = [[Scores objectAtIndex:i] doubleValue];
-        if(s < myGlobalBestFitness) {
-            myGlobalBestFitness = s;
+        if(s < [[myGlobalBest Fitness]  doubleValue]) {
             myGlobalBest = p;
         }
     }
@@ -113,10 +140,11 @@
     return myGlobalBest;
 }
 
--(void)resetParticles
+-(void)resetParticles: (BOOL)ResetPosits
 {
+    myGlobalBest = [myParticles objectAtIndex:arc4random() % [myParticles count]];
     for(int i = 0; i < [myParticles count]; i++) {
-        [[myParticles objectAtIndex:i] reset];
+        [[myParticles objectAtIndex:i] reset: ResetPosits];
     }
 }
 

@@ -9,7 +9,7 @@
 #import "PSOViewController.h"
 
 @implementation PSOViewController
-@synthesize mySwarmView, myPSO;
+@synthesize mySwarmView, myPSO, popSizeSlider, maxVelSlider;
 
 
 - (void)dealloc
@@ -32,9 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    int pointCount = 10;
+    int pointCount = (int)popSizeSlider.value;
     int dimCount = 2;
-    double maxVelocity = 0.5;
+    double maxVelocity = maxVelSlider.value;
     
     touchPoint = CGPointMake(mySwarmView.frame.size.width / 2, mySwarmView.frame.size.height / 2 );
     mySwarmView.touchPoint = touchPoint;
@@ -72,6 +72,16 @@
 
 -(void) update 
 {
+    
+    [self evaluateFitness];
+    [myPSO iterate:scores];
+    
+    [mySwarmView setNeedsDisplay];
+    
+}
+
+-(void) evaluateFitness
+{
     double x, y, dist;
     int dimension = [[myPSO Dimension] intValue];
     
@@ -86,11 +96,36 @@
         }
         
         [scores replaceObjectAtIndex:j withObject:[NSNumber numberWithDouble:dist]];
-    }
+    }   
+}
 
-    [myPSO iterate:scores];
+-(IBAction) resetContext
+{
+    [myPSO resetParticles:YES];
     
-    [mySwarmView setNeedsDisplay];
+}
+
+-(IBAction) updatePSO
+{
+    //int dimCount = 2;
+    
+    if([[myPSO Particles] count] != (int)popSizeSlider.value) {
+        if((int)popSizeSlider.value > [[myPSO Particles] count]) {
+            for(int i = [[myPSO Particles] count]; i < (int)popSizeSlider.value; i++) {
+                [scores addObject:[NSNumber numberWithDouble:DBL_MAX]];
+            }
+        } else {
+            for(int i = [[myPSO Particles]count] - 1; i >= (int)popSizeSlider.value; i--) {
+                [scores removeObjectAtIndex:i];
+            }
+        }
+        [myPSO setParticleCount:(int)popSizeSlider.value];
+        [myPSO resetParticles:NO];   
+    }
+    
+    if(maxVelSlider.value != [myPSO velocityFactor]) {
+        [myPSO setVelocityFactor:maxVelSlider.value];
+    }
     
 }
 
@@ -110,9 +145,9 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *theTouch = [[touches allObjects] objectAtIndex:0];
-    touchPoint = [theTouch locationInView:mySwarmView];
-    mySwarmView.touchPoint = touchPoint;
-    [myPSO resetParticles];
+        touchPoint = [theTouch locationInView:mySwarmView];
+        mySwarmView.touchPoint = touchPoint;
+        [myPSO resetParticles:NO];
 }
 
 @end
