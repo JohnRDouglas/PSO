@@ -98,15 +98,20 @@ float rnd()
     
     double ub, lb;
     for(int i = 0; i < dimensions; i++) {
+        ub = [[upperBounds objectAtIndex:i] doubleValue];
+        lb = [[lowerBounds objectAtIndex:i] doubleValue];
+
         myVelocities[i] = .5 * (1 + 1.0 * rnd()) * myVelocities[i] + 
         1.4945 * rnd() * (myBestPosits[i] - myPosits[i]) + 
         1.4945 * rnd() * ([[[globalBest BestPosits] objectAtIndex:i] doubleValue] - myPosits[i]);
         
+        if(fabs(myVelocities[i]) > velocityFactor * (ub - lb)) {
+            //myVelocities[i] = (1 - rnd() * 2) * velocityFactor * (ub - lb);
+            myVelocities[i]= velocityFactor * (ub - lb) * myVelocities[i] / fabs(myVelocities[i]);
+        }
+        
         myPosits[i] += myVelocities[i];
 
-        ub = [[upperBounds objectAtIndex:i] doubleValue];
-        lb = [[lowerBounds objectAtIndex:i] doubleValue];
-                
         if(myPosits[i] > ub) {
             myPosits[i] = (ub - fabs(ub - myPosits[i]));
             myVelocities[i] *= -1;
@@ -117,9 +122,7 @@ float rnd()
             myVelocities[i] *= -1;
         }
         
-        if(fabs(myVelocities[i]) > velocityFactor * (ub - lb)) {
-            myVelocities[i] = velocityFactor * (1 - rnd() * 2) * (ub - lb);
-        }
+        
     }
 }
 
