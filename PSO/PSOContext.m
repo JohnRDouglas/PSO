@@ -12,23 +12,22 @@
 @implementation PSOContext
 @synthesize upperBounds, lowerBounds;
 
--(id) initWithPopulation: (int)PopSize dimension: (int)DimCount lowerBounds: (NSArray *)newLowerBounds upperBounds: (NSArray *)newUpperBounds
+-(id) initWithPopulation: (int)PopSize dimension: (int)DimCount lowerBounds: (double *)newLowerBounds upperBounds: (double *)newUpperBounds
 {
     self = [super init];
 
     if(self) {
-        myParticles = [[NSMutableArray alloc] initWithCapacity:PopSize];
+        myParticles = [[NSMutableArray alloc] initWithCapacity:PopSize] ;
         myDimension = DimCount;
         self.lowerBounds = newLowerBounds;
         self.upperBounds = newUpperBounds;
     
         for(int i = 0; i < PopSize; i++) {
-            Particle *p = [[[Particle alloc] initWithDimension: DimCount 
-                                                  lowerBounds:newLowerBounds upperBounds:newUpperBounds] autorelease];
+            Particle *p = [[Particle alloc] initWithDimension: DimCount 
+                                                  lowerBounds:newLowerBounds upperBounds:newUpperBounds];
             [myParticles addObject:p];
         }
         
-        //myGlobalBest = [myParticles objectAtIndex:0];
         myGlobalBest = [myParticles objectAtIndex:arc4random() % [myParticles count]];
     }
     return self;
@@ -75,6 +74,7 @@
     }
 }
 
+// If a new particle count is in order, remove extraneous ones or add new, randomized ones
 -(void) setParticleCount: (int) popSize
 {
     if(popSize == [myParticles count])
@@ -99,38 +99,28 @@
 
 -(NSArray *) Particles 
 {
-
     return myParticles;
 }
 
--(NSNumber *)Dimension
+-(int)Dimension
 {
-    return [NSNumber numberWithInt: myDimension];
+    return myDimension;
 }
 
--(void) iterate: (NSArray *)Scores
+-(void) iterateSwarm: (double *)Scores
 {
-    int popSize = [myParticles count];
-    
-    if([Scores count] != popSize)
-        return;
     
     // Have scores, determine if new globalBest has emerged and set it
-    Particle *p;
-    for(int i = 0; i < popSize; i++) {
-        p = [myParticles objectAtIndex:i];
-        double s = [[Scores objectAtIndex:i] doubleValue];
-        if(s < [[myGlobalBest Fitness]  doubleValue]) {
-            myGlobalBest = p;
+    for(int i = 0; i < [myParticles count]; i++) {
+        if(Scores[i] < [myGlobalBest Fitness]) {
+            myGlobalBest = [myParticles objectAtIndex:i];
         }
     }
     
-    
-    for(int i = 0; i < popSize; i++) {
-        p = [myParticles objectAtIndex:i];
-        p.globalBest = myGlobalBest;
-        
-        [p iterate: [Scores objectAtIndex:i]];
+    // Neighborhood will need to be taken into consideration here
+    for(int i = 0; i < [myParticles count]; i++) {
+        [[myParticles objectAtIndex:i] setGlobalBest: myGlobalBest];
+        [[myParticles objectAtIndex:i] iterate: Scores[i]];
     }
 }
 
@@ -145,6 +135,7 @@
     myGlobalBest = [myParticles objectAtIndex:arc4random() % [myParticles count]];
     for(int i = 0; i < [myParticles count]; i++) {
         [[myParticles objectAtIndex:i] reset: ResetPosits];
+        [[myParticles objectAtIndex:i] setGlobalBest:myGlobalBest];
     }
 }
 

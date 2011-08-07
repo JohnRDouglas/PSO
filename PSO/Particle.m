@@ -16,9 +16,9 @@ float rnd()
 }
 
 @implementation Particle
-@synthesize upperBounds, lowerBounds, globalBest;
+@synthesize upperBounds, lowerBounds, globalBest, neighbors;
 
--(id) initWithDimension: (int)DimCount lowerBounds: (NSArray *)newLowerBounds upperBounds: (NSArray *)newUpperBounds
+-(id) initWithDimension: (int)DimCount lowerBounds: (double *)newLowerBounds upperBounds: (double *)newUpperBounds
 {
     self = [Particle alloc];
     
@@ -31,11 +31,10 @@ float rnd()
         self.lowerBounds = newLowerBounds;
         self.upperBounds = newUpperBounds;
     
-        // If min value >= 0.0 && max value <= 1.0,
         double lb, ub;
         for(int i = 0; i < dimensions; i++) {
-            lb = [[lowerBounds objectAtIndex:i] doubleValue];
-            ub = [[upperBounds objectAtIndex:i] doubleValue];
+            lb = lowerBounds[i];
+            ub = upperBounds[i];
             myPosits[i] = lb + rnd() * (ub - lb);
 
             myVelocities[i] = (1 - 2 *rnd()) * (ub - lb);
@@ -56,57 +55,42 @@ float rnd()
     
     double lb, ub;
     for (int i = 0; i < dimensions; i++) {
-        lb = [[lowerBounds objectAtIndex:i] doubleValue];
-        ub = [[upperBounds objectAtIndex:i] doubleValue];
-
+        lb = lowerBounds[i];
+        ub = upperBounds[i];
         myVelocities[i] = (1 - 2 *rnd()) * velocityFactor * (ub - lb);
     }
 }
 
-
--(NSArray *) Posits
+-(double *) Posits
 {
-    // Wrap double* into NSArray of NSNumbers
-    NSMutableArray *p = [[NSMutableArray alloc] initWithCapacity:dimensions];
-    for(int i = 0; i < dimensions; i++) {
-        [p addObject:[NSNumber numberWithFloat:myPosits[i]]];
-    }
-    
-    return p;
-    
+    return myPosits;
 }
 
--(NSArray *) BestPosits
+-(double *)BestPosits
 {
-    // Wrap double* into NSArray of NSNumbers
-    NSMutableArray *bp = [[NSMutableArray alloc] initWithCapacity:dimensions];
-    for(int i = 0; i < dimensions; i++) {
-        [bp addObject:[NSNumber numberWithFloat:myBestPosits[i]]];
-    }
-    
-    return bp;
+    return  myBestPosits;   
 }
 
--(NSInteger) Dimension
+
+-(int) Dimension
 {
     return dimensions;
 }
 
--(void) iterate: (NSNumber *) Score
+-(void) iterate: (double) Score
 {
     [self setFitness:Score];
     
     double ub, lb;
     for(int i = 0; i < dimensions; i++) {
-        ub = [[upperBounds objectAtIndex:i] doubleValue];
-        lb = [[lowerBounds objectAtIndex:i] doubleValue];
-
+        ub = upperBounds[i];
+        lb = lowerBounds[i];
+        
         myVelocities[i] = .5 * (1 + 1.0 * rnd()) * myVelocities[i] + 
-        1.4945 * rnd() * (myBestPosits[i] - myPosits[i]) + 
-        1.4945 * rnd() * ([[[globalBest BestPosits] objectAtIndex:i] doubleValue] - myPosits[i]);
+            1.4945 * rnd() * ([globalBest BestPosits][i] - myPosits[i]) + 
+            1.4945 * rnd() * (myBestPosits[i] - myPosits[i]);
         
         if(fabs(myVelocities[i]) > velocityFactor * (ub - lb)) {
-            //myVelocities[i] = (1 - rnd() * 2) * velocityFactor * (ub - lb);
             myVelocities[i]= velocityFactor * (ub - lb) * myVelocities[i] / fabs(myVelocities[i]);
         }
         
@@ -121,14 +105,13 @@ float rnd()
             myPosits[i] = lb + (lb - myPosits[i]);
             myVelocities[i] *= -1;
         }
-        
-        
     }
 }
 
--(BOOL) setFitness: (NSNumber *)Score
+-(BOOL) setFitness: (double)Score
 {
-    myFitness = [Score doubleValue];
+    myFitness = Score;
+    
     if(myFitness < myBestFitness) {
         myBestFitness = myFitness;
         for(int i = 0; i < dimensions; i++) {
@@ -140,20 +123,21 @@ float rnd()
 }
 
 
--(NSNumber *)Fitness 
+-(double)Fitness 
 {
-    return [NSNumber numberWithDouble:myFitness];
+    return myFitness;
 }
 
 -(void) reset: (BOOL) ResetPosits
 {
     myFitness = DBL_MAX;
     myBestFitness = DBL_MAX;
+    double lb, ub;
+    
     for(int i = 0; i < dimensions; i++) {
         if(ResetPosits) {
-            double lb, ub;
-            lb = [[lowerBounds objectAtIndex:i] doubleValue];
-            ub = [[upperBounds objectAtIndex:i] doubleValue];
+            lb = lowerBounds[i];
+            ub = upperBounds[i];
             myPosits[i] = lb + rnd() * (ub - lb);
         }
         myBestPosits[i] = myPosits[i];

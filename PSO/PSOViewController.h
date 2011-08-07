@@ -17,8 +17,10 @@
     IBOutlet SwarmView *mySwarmView;
     PSOContext *myPSO;
     CGPoint touchPoint;
-    NSMutableArray *scores;
+    double *scores;
     IBOutlet UISlider *popSizeSlider, *maxVelSlider;
+    time_t startTime, convergeTime, tapTime;
+    double score;
 }
 @property (nonatomic, retain) IBOutlet SwarmView *mySwarmView;
 @property (nonatomic, retain) PSOContext *myPSO;
@@ -26,5 +28,6 @@
 
 -(void) update;
 -(void) evaluateFitness;
+-(void) initSwarm;
 
 @end

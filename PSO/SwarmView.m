@@ -45,58 +45,52 @@
     if(PSO == NULL)
         return;
  
-    static double **posits;
     static int dimCount;
     
     // Drawing code
     if(_notFirstRun == NO) {
-		context = UIGraphicsGetCurrentContext();
         _notFirstRun = YES;
-        dimCount = [[PSO Dimension] intValue];
-        posits = malloc(sizeof(double*) * [[PSO Particles] count]);
-        for(int i = 0; i < [[PSO Particles] count]; i++) {
-            posits[i] = malloc(sizeof(double) * dimCount);
-        }
-
-	}
-
-    CGMutablePathRef path;
+        context = UIGraphicsGetCurrentContext();
     
-    context = UIGraphicsGetCurrentContext();
-	path = CGPathCreateMutable();
+        dimCount = [PSO Dimension];
+    }
 
-    CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
-    CGContextAddEllipseInRect(context, CGRectMake(touchPoint.x - 2, touchPoint.y - 2, 4, 4));
-    CGContextStrokePath(context);
     
-    path = CGPathCreateMutable();
-	
-    //CGContextSetStrokeColorWithColor(context, [[UIColor greenColor] CGColor]);
-    CGContextSetRGBStrokeColor(context, 0.0, 0.0, 1.0, 1.0);		
-    double x, y;
+    //CGMutablePathRef path;
+    double x, y;   
     
+    
+
+    // Draw current posit circles in light blue
+    //path = CGPathCreateMutable();
+    CGContextSetRGBStrokeColor(context, 0.0, 0.5, 1.0, 1.0);		
     for(int i = 0; i < [[PSO Particles] count]; i++) {
         Particle *p = [[PSO Particles] objectAtIndex:i];
-        for(int j = 0; j < dimCount; j+=2) {
-            x = [[[p Posits] objectAtIndex:j] doubleValue];
-            y = [[[p Posits] objectAtIndex:j+1] doubleValue];
-            CGContextAddEllipseInRect(context, CGRectMake(x - 2, y - 2, 4, 4));
-        }
+        x = [p Posits][0];
+        y = [p Posits][1];
+        CGContextAddEllipseInRect(context, CGRectMake(x - 2, y - 2, 4, 4));
     }
     CGContextStrokePath(context);
     
+    // Draw pBest posits in green
+    //path = CGPathCreateMutable();
+    double xb, yb;
     CGContextSetRGBStrokeColor(context, 0.0, 1.0, 0.0, 1.0);		
     for(int i = 0; i < [[PSO Particles] count]; i++) {
         Particle *p = [[PSO Particles] objectAtIndex:i];
-        for(int j = 0; j < dimCount; j+=2) {
-            x = [[[p BestPosits] objectAtIndex:j] doubleValue];
-            y = [[[p BestPosits] objectAtIndex:j+1] doubleValue];
-            CGContextAddEllipseInRect(context, CGRectMake(x - 2, y - 2, 4, 4));
-        }
+        xb = [p BestPosits][0];
+        yb = [p BestPosits][1];
+        CGContextAddEllipseInRect(context, CGRectMake(xb - 2, yb - 2, 4, 4));
     }
- 
     CGContextStrokePath(context);
     
+    
+    // Draw touchPoint circle in Red
+    //path = CGPathCreateMutable();
+    CGContextSetRGBStrokeColor(context, 1.0, 0.0, 0.0, 1.0);
+    CGContextAddEllipseInRect(context, CGRectMake(touchPoint.x - 2, touchPoint.y - 2, 4, 4));
+    CGContextStrokePath(context);
+
 }
 
 

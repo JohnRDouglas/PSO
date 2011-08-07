@@ -8,6 +8,7 @@
 
 #import "PSOViewController.h"
 
+
 @implementation PSOViewController
 @synthesize mySwarmView, myPSO, popSizeSlider, maxVelSlider;
 
@@ -32,33 +33,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    int pointCount = (int)popSizeSlider.value;
-    int dimCount = 2;
-    double maxVelocity = maxVelSlider.value;
+    
     
     touchPoint = CGPointMake(mySwarmView.frame.size.width / 2, mySwarmView.frame.size.height / 2 );
     mySwarmView.touchPoint = touchPoint;
     
-    scores = [[NSMutableArray alloc] initWithCapacity:pointCount];
-    for(int i = 0; i < pointCount; i++) {
-        [scores addObject:[NSNumber numberWithDouble:DBL_MAX]];
-    }
-    
-    NSMutableArray *lb = [[NSMutableArray alloc] init];
-    NSMutableArray *ub = [[NSMutableArray alloc] init];
-    for(int i = 0; i < dimCount; i++) {
-        [lb addObject:[NSNumber numberWithFloat:0.0]];
-        if(i % 2 == 0) {
-            [ub addObject:[NSNumber numberWithFloat:mySwarmView.frame.size.width]];
-        } else {
-            [ub addObject:[NSNumber numberWithFloat:mySwarmView.frame.size.height]];
-        }
-    }
-    
-    myPSO = [[PSOContext alloc] initWithPopulation:pointCount dimension:dimCount lowerBounds:lb upperBounds:ub];
-    [myPSO setVelocityFactor: maxVelocity];
-    //[myPSO setNeighborhoodSize:2];
-    
+    [self initSwarm];
+        
     mySwarmView.PSO = myPSO;
     
     CADisplayLink *frameLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
@@ -70,32 +51,65 @@
     
 }
 
+-(void) initSwarm
+{
+    int pointCount = (int)popSizeSlider.value;
+    int dimCount = 2;
+    double maxVelocity = maxVelSlider.value;
+    
+    scores = malloc(sizeof(double) * pointCount);
+    
+    for(int i = 0; i < pointCount; i++) {
+        scores[i] = DBL_MAX;
+    }
+    
+    double *lb = malloc(sizeof(double) * dimCount);
+    double *ub = malloc(sizeof(double) * dimCount);
+    
+    for(int i = 0; i < dimCount; i++) {
+        lb[i] = 0;
+        if(i % 2 == 0) {
+            ub[i] = mySwarmView.frame.size.width;
+        } else {
+            ub[i] = mySwarmView.frame.size.height;
+        }
+    }
+    
+    myPSO = [[[PSOContext alloc] initWithPopulation:pointCount dimension:dimCount lowerBounds:lb upperBounds:ub] autorelease];
+    [myPSO setVelocityFactor: maxVelocity];
+    //[myPSO setNeighborhoodSize:2];
+    
+}
+
+
 -(void) update 
 {
     
     [self evaluateFitness];
-    [myPSO iterate:scores];
+    [myPSO iterateSwarm:scores];
     
     [mySwarmView setNeedsDisplay];
     
 }
 
+
 -(void) evaluateFitness
 {
     double x, y, dist;
-    int dimension = [[myPSO Dimension] intValue];
+    int dimension = [myPSO Dimension];
+    Particle *p;
     
-    for(int j = 0; j < [[myPSO Particles] count]; j++) {
+    for(int i = 0; i < [[myPSO Particles] count]; i++) {
         dist = 0;
-        Particle *p = [[myPSO Particles] objectAtIndex:j];
+        p = [[myPSO Particles] objectAtIndex:i];
         
-        for(int i = 0; i < dimension; i+=2) {
-            x = [[[p Posits] objectAtIndex:i] doubleValue];
-            y = [[[p Posits] objectAtIndex:i+1] doubleValue];
+        for(int j = 0; j < dimension; j+=2) {
+            x = [p Posits][j];
+            y = [p Posits][j+1];
             dist += sqrt(pow(x - touchPoint.x, 2) + pow(y - touchPoint.y, 2));
         }
         
-        [scores replaceObjectAtIndex:j withObject:[NSNumber numberWithDouble:dist]];
+        scores[i] = dist;
     }   
 }
 
@@ -105,21 +119,24 @@
     
 }
 
+
+// If any of the parameters need to change, do so
 -(IBAction) updatePSO
 {
-    //int dimCount = 2;
+    int newPopCount = (int)popSizeSlider.value;
     
-    if([[myPSO Particles] count] != (int)popSizeSlider.value) {
-        if((int)popSizeSlider.value > [[myPSO Particles] count]) {
-            for(int i = [[myPSO Particles] count]; i < (int)popSizeSlider.value; i++) {
-                [scores addObject:[NSNumber numberWithDouble:DBL_MAX]];
-            }
-        } else {
-            for(int i = [[myPSO Particles]count] - 1; i >= (int)popSizeSlider.value; i--) {
-                [scores removeObjectAtIndex:i];
-            }
+    if([[myPSO Particles] count] != newPopCount) {
+        double *newScores = malloc(sizeof(double) * newPopCount);
+
+        for(int i = 0; i < newPopCount; i++) {
+            if(i < [[myPSO Particles] count])
+                newScores[i] = scores[i];
+            else
+                newScores[i] = DBL_MAX;
         }
-        [myPSO setParticleCount:(int)popSizeSlider.value];
+
+        scores = newScores;
+        [myPSO setParticleCount:newPopCount];
         [myPSO resetParticles:NO];   
     }
     
@@ -127,6 +144,11 @@
         [myPSO setVelocityFactor:maxVelSlider.value];
     }
     
+}
+
+-(void) resetTimer
+{
+    startTime = time(0);
 }
 
 - (void)viewDidUnload

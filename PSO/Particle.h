@@ -20,22 +20,21 @@
 
 }
 
-@property (nonatomic, retain) NSArray *upperBounds, *lowerBounds;
+@property double *upperBounds, *lowerBounds;
 @property (nonatomic, retain) Particle *globalBest;
 @property (nonatomic, retain) NSArray *neighbors;
 
--(id) initWithDimension: (int)DimCount lowerBounds: (NSArray *)newLowerBounds upperBounds: (NSArray *)newUpperBounds;
+-(id) initWithDimension: (int)DimCount lowerBounds: (double *)newLowerBounds upperBounds: (double *)newUpperBounds;
 -(void) setVelocityFactor: (double)MaxVelocity;
 
+-(double *)Posits;
+-(double *)BestPosits;
+-(int) Dimension;
 
--(NSArray *) Posits;
--(NSArray *) BestPosits;
--(NSInteger) Dimension;
+-(void) iterate: (double) Score;
+-(BOOL) setFitness: (double) Score;
 
--(void) iterate: (NSNumber *) Score;
--(BOOL) setFitness: (NSNumber *) Score;
-
--(NSNumber *) Fitness;
+-(double) Fitness;
 -(void) reset: (BOOL) ResetPosits;
 
 @end

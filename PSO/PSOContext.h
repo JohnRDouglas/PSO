@@ -17,19 +17,18 @@
     double velocityFactor;
 }
 
-@property (nonatomic, retain) NSArray *upperBounds, *lowerBounds;
+@property double *upperBounds, *lowerBounds;
 
-
--(id) initWithPopulation: (int)PopSize dimension: (int)DimCount lowerBounds: (NSArray *)newLowerBounds upperBounds: (NSArray *)newUpperBounds;;
+-(id) initWithPopulation: (int)PopSize dimension: (int)DimCount lowerBounds: (double *)newLowerBounds upperBounds: (double *)newUpperBounds;
 -(void) setVelocityFactor: (double)MaxVelocity;
 -(void) setNeighborhoodSize: (int)NeighborCount;
 -(void) setParticleCount: (int) popSize;
 
 -(NSArray *) Particles;
--(NSNumber *) Dimension;
+-(int) Dimension;
 -(double) velocityFactor;
 
--(void) iterate: (NSArray *)Scores;
+-(void) iterateSwarm: (double *)Scores;
 
 -(Particle *)globalBest;
 
